@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>React page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <h2>Speed check by Lakshmi Karthik Ravuri</h2>
+
+  <div id="target"> Your time </div>
+  <button type="button" class="btn btn-danger" onclick="startTime()">Start Timer</button>
+  <div id="counter"> Count </div>
+  <button type="button" class="btn btn-warning" onclick="recordTime()"> React</button>
+  
+  <p id="countdown">I will become red </p>
+  
+  <script> 
+  var reactTime
+  function recordTime(){
+    reactTime=undefined;
+    reactTime= Date.now();
+    console.log(reactTime);
+  }
+  var i=0;
+  function startTime(){
+    for( i=0;i<9;i++){
+        setTimeou(i);  
+    }
+   function setTimeou(i)
+   {
+        setTimeout(()=>{document.getElementById('countdown').innerHTML=i;},(8-i)*1000);
+    }
+    ( () => {
+        console.log("Entered anononymouse fn");
+         if(reactTime==undefined){
+            console.log("entered if");
+            document.getElementById('target').innerHTML="Too Slow";
+         }
+         else{
+            console.log("entered else");
+            let endTime;
+            endTime=Date.now();
+            console.log("endtime is"+endTime);
+            let temp=endTime-reactTime;
+            console.log(temp);
+            document.getElementById('target').innerHTML="Time was "+temp;
+         }
+        })();
+  }
+  function buttonPress1() {
+    setTimeout(function(){document.getElementById('target').style.color = "red"}, 3000)
+  }
+  function buttonPress2() {
+    setTimeout(()=>{document.getElementById('target').style.color = "red"}, 3000)
+  }
+  </script>
+
+</body>
+</html>
