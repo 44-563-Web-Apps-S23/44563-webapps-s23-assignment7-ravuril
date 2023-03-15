@@ -37,8 +37,7 @@
 	<button onclick="makeNewDiv()">Add value</button>
 	<button onclick="get()">Get</button>
 	<button onclick="delay()">Delay</button>
-
-	 and 
+    <button onclick="Promote()">Promote</button>
 	
 </body>
 <script>
@@ -76,6 +75,19 @@
         container.insertBefore( removedItem, queueItems[len-1])
         // .append(removedItem)
 
-    }   
+    }
+    function Promote(){
+        let queueItems = document.getElementsByClassName("delayQ")
+        let len=queueItems.length;
+        
+        let rand=Math.floor(Math.random()*len);
+        console.log(rand);
+        removedItem=queueItems[rand];
+            console.log(removedItem);
+            console.log(removedItem.innerHTML);
+            queueItems[rand].remove();
+            let container = document.getElementById('target')
+	        container.insertBefore(removedItem,container.firstChild)
+    }  
 </script>
 </html>	

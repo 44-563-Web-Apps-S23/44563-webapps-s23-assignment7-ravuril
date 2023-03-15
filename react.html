@@ -19,7 +19,6 @@
   <button type="button" class="btn btn-warning" onclick="recordTime()"> React</button>
   
   <p id="countdown">I will become red </p>
-  
   <script> 
   var reactTime
   function recordTime(){
@@ -28,8 +27,11 @@
     console.log(reactTime);
   }
   var i=0;
+  let rav=Math.floor((Math.random() * 10) + 2);
   function startTime(){
-    for( i=0;i<9;i++){
+    rav=Math.floor((Math.random() * 10) + 2);
+    for( i=0;i<rav;i++){
+        console.log(rav)
         setTimeou(i);  
     }
    function setTimeou(i)

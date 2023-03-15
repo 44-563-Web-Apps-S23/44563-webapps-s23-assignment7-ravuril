@@ -45,6 +45,7 @@
 <p id="penalty">Penalty is zero.</p>
 <p onclick="help()">Click for help</p>
 <p id="help">Help report</p>
+<!-- <p><button onclick="bonus()" class="btn btn-primary">Bonus</button></p> -->
 <div class="container">
     <div class="row">
       <div class="col-sm-2" style="background-color:lavender;">
@@ -161,37 +162,7 @@
         lastCheck = position;
     }
     }
-    // function help(){
-    //     console.log(catLocation)
-    //     console.log(lastCheck)
-    //     console.log(mouseLocation)
-    //     // console.log(catLocation)
-    //     // console.log(catLocation)
-    //     // console.log(catLocation)
-        
-
-
-    //     cat_row = (catLocation + 1)%6;
-    //     cat_col = parseInt((catLocation + 1)/6);
-    //     last_loc_row = (lastCheck+1)%6;
-    //     last_loc_col = parseInt((lastCheck+1)/6);
-    //     mouse_row = (mouseLocation + 1)%6;
-    //     mouse_col = parseInt((mouseLocation + 1)/6);
-        
-    //     if(cat_row == last_loc_row || cat_row-1 == last_loc_row || cat_col+1 == last_loc_col || cat_col-1 == last_loc_col){
-    //         output="meow";
-    //     }
-    //     else if(mouse_col-1 == last_loc_col ||  mouse_col+1 == last_loc_col || mouse_row+1 == last_loc_row || mouse_row-1 == last_loc_row){
-    //         output="squeek";
-    //     }
-    //     else{
-    //         output="sorry, no help available"
-    //     }
-    //     penalty+=2;
-    //     document.getElementById("penalty").innerHTML="penality is " + penalty;
-    //     document.getElementById("help").innerHTML=output;
-        
-    // }
+    
     function help(){
         
         cat_col = catLocation%6;
@@ -218,6 +189,49 @@
         document.getElementById("penalty").innerHTML="penality is " + penalty;
         document.getElementById("help").innerHTML=output;
         
+    }
+    let rand1, rand2, rand3;
+    function bonus(){
+        r1=Math.floor(Math.random()*24);
+        
+        console.log(rand1);
+        rand2=Math.floor(Math.random()*24);
+        console.log(rand2);
+        rand3=Math.floor(Math.random()*24);
+        console.log(rand3);
+        lastCheck=rand3;
+        catLocation=rand1;
+        mouseLocation=rand2;
+        bonus=0;
+        penal=0;
+        let last_col=lastCheck%6;
+        let last_row=Math.floor(lastCheck/6);
+        let cat_col=catLocation%6;
+        let cat_row=Math.floor(catLocation/6);
+        let col_diff=Math.abs(lastcol-catcol);
+        let row_diff=(Math.abs(lastrow-catrow));
+        let rat_col=mouseLocation%6;
+        let rat_row=Math.floor(mouseLocation/6);
+        let rat_col_diff=Math.abs(last_col-rat_col);
+        let rat_row_diff=(Math.abs(last_row-rat_row));
+        console.log(row_diff,col_diff)
+        if(rat_row_diff<=1 && rat_col_diff<=1)
+        {
+            document.getElementById("help").innerHTML="squeek"
+            penal+=2;
+            penalty.innerHTML="Penalty is "+penal;
+        }
+        else if(row_diff<=1 && col_diff<=1)
+        {
+            document.getElementById("help").innerHTML="Meow"
+            penal+=2;
+            penalty.innerHTML="Penalty is "+penal;
+        }
+        else{
+            document.getElementById("help").innerHTML="sorry, no help available"
+            penal+=2;
+            penalty.innerHTML="Penalty is "+penal;
+        }
     }
 </script>
 </body>
