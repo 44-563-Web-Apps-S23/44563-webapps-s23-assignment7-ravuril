@@ -144,12 +144,12 @@
          if(position==mouseLocation){
             document.getElementById(ids[position]).src="mouse.jpg";
             gameOver = true;
-            penalty -=3;
+            penalty -= 3;
         }
         else if(position==catLocation){
             document.getElementById(ids[position]).src="tiger.jpg";
             gameOver = true;
-            penalty +=4;
+            penalty += 4;
         }
         else{
             document.getElementById(ids[position]).src="grass.jpg";
@@ -161,19 +161,54 @@
         lastCheck = position;
     }
     }
+    // function help(){
+    //     console.log(catLocation)
+    //     console.log(lastCheck)
+    //     console.log(mouseLocation)
+    //     // console.log(catLocation)
+    //     // console.log(catLocation)
+    //     // console.log(catLocation)
+        
+
+
+    //     cat_row = (catLocation + 1)%6;
+    //     cat_col = parseInt((catLocation + 1)/6);
+    //     last_loc_row = (lastCheck+1)%6;
+    //     last_loc_col = parseInt((lastCheck+1)/6);
+    //     mouse_row = (mouseLocation + 1)%6;
+    //     mouse_col = parseInt((mouseLocation + 1)/6);
+        
+    //     if(cat_row == last_loc_row || cat_row-1 == last_loc_row || cat_col+1 == last_loc_col || cat_col-1 == last_loc_col){
+    //         output="meow";
+    //     }
+    //     else if(mouse_col-1 == last_loc_col ||  mouse_col+1 == last_loc_col || mouse_row+1 == last_loc_row || mouse_row-1 == last_loc_row){
+    //         output="squeek";
+    //     }
+    //     else{
+    //         output="sorry, no help available"
+    //     }
+    //     penalty+=2;
+    //     document.getElementById("penalty").innerHTML="penality is " + penalty;
+    //     document.getElementById("help").innerHTML=output;
+        
+    // }
     function help(){
         
-        cat_row = catLocation%6;
-        cat_col = catLocation/6;
-        last_loc_row = lastCheck%6;
-        last_loc_col = lastCheck/6;
-        mouse_row = mouseLocation%6;
-        mouse_col = mouseLocation/6;
-        
-        if(cat_row+1 == last_loc_row || cat_row-1 == last_loc_row || cat_col+1 ==last_loc_col || cat_col-1 ==last_loc_col){
+        cat_col = catLocation%6;
+        cat_row = Math.floor(catLocation/6);
+        last_loc_col = lastCheck%6;
+        last_loc_row = Math.floor(lastCheck/6);
+        mouse_col = mouseLocation%6;
+        mouse_row = Math.floor(mouseLocation/6);
+        cat_row_diff = Math.abs(last_loc_row - cat_row);
+        cat_col_diff = Math.abs(last_loc_col - cat_col);
+        mouse_row_diff = Math.abs(last_loc_row - mouse_row);
+        mouse_col_diff = Math.abs(last_loc_col - mouse_col);
+        if(cat_row_diff<=1 && cat_col_diff<=1){
+
             output="meow";
         }
-        else if(last_loc_row == last_loc_col || mouse_row+1 == last_loc_row || mouse_row-1 == last_loc_row || mouse_col+1 ==last_loc_col || mouse_col-1 ==last_loc_col){
+        else if(mouse_row_diff<=1 && mouse_col_diff<=1){
             output="squeek";
         }
         else{
