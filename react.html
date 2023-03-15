@@ -19,26 +19,23 @@
   <button type="button" class="btn btn-warning" onclick="recordTime()"> React</button>
   
   <p id="countdown">I will become red </p>
-  <script> 
-  var reactTime
+  <script>
+    let reactTime 
   function recordTime(){
     reactTime=undefined;
     reactTime= Date.now();
     console.log(reactTime);
   }
-  var i=0;
+  let i=0;
   let rav=Math.floor((Math.random() * 10) + 2);
   function startTime(){
-    rav=Math.floor((Math.random() * 10) + 2);
+     rav=Math.floor((Math.random() * 10) + 2);
     for( i=0;i<rav;i++){
-        console.log(rav)
-        setTimeou(i);  
+        console.log(rav);
+        setTimeou(i); 
     }
-   function setTimeou(i)
-   {
-        setTimeout(()=>{document.getElementById('countdown').innerHTML=i;},(8-i)*1000);
-    }
-    ( () => {
+    
+  setTimeout( () => {
         console.log("Entered anononymouse fn");
          if(reactTime==undefined){
             console.log("entered if");
@@ -51,16 +48,14 @@
             console.log("endtime is"+endTime);
             let temp=endTime-reactTime;
             console.log(temp);
-            document.getElementById('target').innerHTML="Time was "+temp;
-         }
-        })();
-  }
-  function buttonPress1() {
-    setTimeout(function(){document.getElementById('target').style.color = "red"}, 3000)
-  }
-  function buttonPress2() {
-    setTimeout(()=>{document.getElementById('target').style.color = "red"}, 3000)
-  }
+            document.getElementById('target').innerHTML="Time was "+temp; }},8*1000);
+    }
+    
+    function setTimeou(i)
+   {
+        setTimeout(()=>{document.getElementById('countdown').innerHTML=i;},(rav-i)*1000);
+    }
+  
   </script>
 
 </body>
